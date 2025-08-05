@@ -9,6 +9,8 @@ import java.awt.GridBagLayout;
 
 public class Idiot {
     public static void main (String[] args){
+        int id = 0;
+
         JFrame frame = new JFrame("Cadastro de Usuário");
         frame.setSize(1200,1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,8 +47,11 @@ public class Idiot {
         painelIdade.setBounds(333,450,500,100);
         painel.add(painelIdade);
 
+        Usuario[] usuario = new Usuario[id, "um", "um", 1];
+
         JButton butao = new JButton("Não, não é o país Butão");
         butao.setBounds(333,600, 500, 100);
+        butao.addActionListener(usuario.cadastrarUsuario(painelNome.get));
         painel.add(butao);
 
         frame.setVisible(true);
