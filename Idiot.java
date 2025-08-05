@@ -10,7 +10,7 @@ import java.awt.GridBagLayout;
 public class Idiot {
     public static void main (String[] args){
         JFrame frame = new JFrame("Cadastro de Usuário");
-        frame.setSize(1300,1000);
+        frame.setSize(1200,1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel painel = new JPanel();
@@ -20,6 +20,7 @@ public class Idiot {
         painel.setLayout(new GridBagLayout());
 
         frame.add(painel);
+        painel.setLayout(null);
 
         JLabel textoNome = new JLabel("Texto 1 LMAO XDXDXD");
         JTextField campoNome = new JTextField("Isso é um placeholder?");
@@ -27,21 +28,25 @@ public class Idiot {
         painelNome.add(textoNome);
         painelNome.add(campoNome);
         // painel.add(new JLabel(imagem1));
+        painelNome.setBounds(333,150,500,100);
         painel.add(painelNome);
 
         JLabel textoEmail = new JLabel("Texto 2 is so sigma lol");
         JTextField campoEmail = new JTextField("Já descobri que essa porra não é placeholder");
         painelEmail.add(textoEmail);
         painelEmail.add(campoEmail);
+        painelEmail.setBounds(333,300,500,100);
         painel.add(painelEmail);
 
         JLabel textoIdade = new JLabel("Texto 3 chipamzini bananini");
         JTextField campoIdade = new JTextField("COMO DIMINUI A FONTE?");
         painelIdade.add(textoIdade);
         painelIdade.add(campoIdade);
+        painelIdade.setBounds(333,450,500,100);
         painel.add(painelIdade);
 
         JButton butao = new JButton("Não, não é o país Butão");
+        butao.setBounds(333,600, 500, 100);
         painel.add(butao);
 
         frame.setVisible(true);
