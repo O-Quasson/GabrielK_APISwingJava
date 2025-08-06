@@ -45,8 +45,9 @@ public class Usuario {
         this.idade = idade;
     };
 
-    public void cadastrarUsuario(String nome, String email, int idade, int id, Usuario... usuario){
-        if((nome!="")&&(email!="")&&(idade>=1)){
+    public void cadastrarUsuario(String nome, String email, String strIdade, int id, Usuario... usuario){
+        int intidade = Integer.parseInt(strIdade);
+        if((nome!="")&&(email!="")&&(intidade>=1)){
             usuario[id] = new Usuario(id, nome, email, idade);
             JOptionPane.showMessageDialog(null, "Usuário cadastrado:\nNome: " + usuario[id].getnome() + "\nEmail: " + usuario[id].getemail() + "\nIdade: " + usuario[id].getidade());
             id = id+1;

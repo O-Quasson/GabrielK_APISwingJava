@@ -6,6 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.GridBagLayout;
+import javax.swing.JFormattedTextField;
+import javax.swing.text.MaskFormatter;
 
 public class Idiot {
     public static void main (String[] args){
@@ -41,17 +43,21 @@ public class Idiot {
         painel.add(painelEmail);
 
         JLabel textoIdade = new JLabel("Texto 3 chipamzini bananini");
-        JTextField campoIdade = new JTextField("COMO DIMINUI A FONTE?");
+        JFormattedTextField campoIdade = new JFormattedTextField("21");
+        MaskFormatter mascaraIdade = new MaskFormatter("##");
+        mascaraIdade.install(campoIdade);
         painelIdade.add(textoIdade);
         painelIdade.add(campoIdade);
         painelIdade.setBounds(333,450,500,100);
         painel.add(painelIdade);
 
-        Usuario[] usuario = new Usuario[id, "um", "um", 1];
+        Usuario[] usuario = new Usuario[10];
 
         JButton butao = new JButton("Não, não é o país Butão");
         butao.setBounds(333,600, 500, 100);
-        butao.addActionListener(usuario.cadastrarUsuario(painelNome.get));
+        //mexer nisso
+        butao.addActionListener(usuario[id].cadastrarUsuario(campoNome.getText().toString(), campoEmail.getText().toString(), campoIdade.getText().toString(), id, usuario));
+
         painel.add(butao);
 
         frame.setVisible(true);
