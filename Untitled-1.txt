@@ -1,0 +1,12 @@
+trabalhos pra fazer:
+ds (10/08)
+pam (13/08)
+pw (??/??)
+geografia (14/08)
+química (12/08)
+
+        opcaoMasculino.setBounds(333,600, 225, 70);
+ opcaoFeminino.setBounds(608,600, 225, 70);
+
+ botaoCadastrar.setBounds(333,500, 225, 70);
+ botaoApagar.setBounds(608,500, 225, 70);

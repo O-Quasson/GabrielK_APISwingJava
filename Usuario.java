@@ -1,16 +1,14 @@
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
-import javax.swing.JOptionPane;
-
 public class Usuario {
     private String nome;
     private String email;
     private int idade;
     private int id;
+    private String genero;
 
-    public Usuario(int id, String nome, String email, int idade){
+    public Usuario(int id, String nome, String genero, String email, int idade){
         this.id = id;
         this.nome = nome;
+        this.genero = genero;
         this.email = email;
         this.idade = idade;
     };
@@ -21,6 +19,10 @@ public class Usuario {
 
     public String getnome() {
         return nome;
+    };
+
+    public String getgenero() {
+        return genero;
     };
 
     public String getemail() {
@@ -39,6 +41,10 @@ public class Usuario {
         this.nome = nome;
     };
 
+    public void setgenero(String genero){
+        this.genero = genero;
+    };
+
     public void setemail(String email){
         this.email = email;
     };
@@ -47,25 +53,4 @@ public class Usuario {
         this.idade = idade;
     };
 
-    public void cadastrarUsuario(String nome, String email, String strIdade, int id, Usuario... usuario){
-        int intidade = Integer.parseInt(strIdade);
-        if((nome!="")&&(email!="")&&(intidade>=1)){
-            usuario[id] = new Usuario(id, nome, email, idade);
-            JOptionPane.showMessageDialog(null, "Usuário cadastrado:\nNome: " + usuario[id].getnome() + "\nEmail: " + usuario[id].getemail() + "\nIdade: " + usuario[id].getidade());
-            id = id+1;
-        }else{
-            JOptionPane.showMessageDialog(null, "Erro!", "Algo deu errado! Aparentemente, um dos campos de informação está incompleto!", JOptionPane.ERROR_MESSAGE);
-        }
-    };
-
-    public void cadastrar(JTextField nome, JTextField email, JFormattedTextField strIdade, int id, Usuario... usuario){
-        int intidade = Integer.parseInt(strIdade.getText());
-        if((nome.getText()!="")&&(email.getText()!="")&&(intidade>=1)){
-            usuario[id] = new Usuario(id, nome.getText(), email.getText(), idade);
-            JOptionPane.showMessageDialog(null, "Usuário cadastrado:\nNome: " + usuario[id].getnome() + "\nEmail: " + usuario[id].getemail() + "\nIdade: " + usuario[id].getidade());
-            id = id+1;
-        }else{
-            JOptionPane.showMessageDialog(null, "Erro!", "Algo deu errado! Aparentemente, um dos campos de informação está incompleto!", JOptionPane.ERROR_MESSAGE);
-        }
-    };
 }
