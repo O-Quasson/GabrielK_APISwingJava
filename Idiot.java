@@ -2,10 +2,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
+// import javax.swing.ImageIcon;
 import java.awt.GridBagLayout;
+import java.text.ParseException;
+
 import javax.swing.JFormattedTextField;
 import javax.swing.text.MaskFormatter;
 
@@ -18,45 +21,62 @@ public class Idiot {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel painel = new JPanel();
-        JPanel painelNome = new JPanel();
-        JPanel painelEmail = new JPanel();
-        JPanel painelIdade = new JPanel();
         painel.setLayout(new GridBagLayout());
 
         frame.add(painel);
         painel.setLayout(null);
 
-        JLabel textoNome = new JLabel("Texto 1 LMAO XDXDXD");
-        JTextField campoNome = new JTextField("Isso é um placeholder?");
+        JLabel textoNome = new JLabel("Digite seu nome:      ");
+        JTextField campoNome = new JTextField("placeholder");
         // ImageIcon imagem1 = new ImageIcon("C:\\Users\\20240474\\Downloads\\gui\\imagens\\idiot.png");
-        painelNome.add(textoNome);
-        painelNome.add(campoNome);
+        painel.add(textoNome);
+        painel.add(campoNome);
         // painel.add(new JLabel(imagem1));
-        painelNome.setBounds(333,150,500,100);
-        painel.add(painelNome);
+        textoNome.setBounds(333,150,500,100);
+        campoNome.setBounds(333,200,500,100);
 
-        JLabel textoEmail = new JLabel("Texto 2 is so sigma lol");
-        JTextField campoEmail = new JTextField("Já descobri que essa porra não é placeholder");
-        painelEmail.add(textoEmail);
-        painelEmail.add(campoEmail);
-        painelEmail.setBounds(333,300,500,100);
-        painel.add(painelEmail);
+        JLabel textoEmail = new JLabel("Digite seu email:        ");
+        JTextField campoEmail = new JTextField("POR QUE CARALHOS ESSA PORRA NÃO AUMENTA DE TAMANHOOOOOOOOOOOOOOOOOOOO");
+        painel.add(textoEmail);
+        painel.add(campoEmail);
+        textoEmail.setBounds(333,300,500,100);
+        campoEmail.setBounds(333,350,500,100);
 
-        JLabel textoIdade = new JLabel("Texto 3 chipamzini bananini");
-        JFormattedTextField campoIdade = new JFormattedTextField("21");
-        MaskFormatter mascaraIdade = new MaskFormatter("##");
+        JLabel textoIdade = new JLabel("Digite sua idade:        ");
+        JFormattedTextField campoIdade = new JFormattedTextField();
+        MaskFormatter mascaraIdade = null;
+        try {
+            // VSCode mandou eu colocar essa linha dentro de um try/catch, então eu só obedeci
+            mascaraIdade = new MaskFormatter("###");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         mascaraIdade.install(campoIdade);
-        painelIdade.add(textoIdade);
-        painelIdade.add(campoIdade);
-        painelIdade.setBounds(333,450,500,100);
-        painel.add(painelIdade);
+        painel.add(textoIdade);
+        painel.add(campoIdade);
+        textoIdade.setBounds(333,450,500,100);
+        campoIdade.setBounds(333,500,500,100);
 
         Usuario[] usuario = new Usuario[10];
+        usuario[0] = new Usuario(id, "null", "null", 0);
 
-        JButton butao = new JButton("Não, não é o país Butão");
+        JButton butao = new JButton("Cadastrar usuário");
         butao.setBounds(333,600, 500, 100);
         //mexer nisso
-        butao.addActionListener(usuario[id].cadastrarUsuario(campoNome.getText().toString(), campoEmail.getText().toString(), campoIdade.getText().toString(), id, usuario));
+        butao.addActionListener(cadastrarUsuario -> {
+            // if(id>10){
+                int intidade = Integer.parseInt(campoIdade.getText().toString());
+                if((campoNome.getText().equals(""))&&(campoEmail.getText().equals(""))&&(intidade>=1)){
+                    usuario[id] = new Usuario(id, campoNome.getText(), campoEmail.getText(), intidade);
+                    JOptionPane.showMessageDialog(null, "Usuário cadastrado:\nNome: " + usuario[id].getnome() + "\nEmail: " + usuario[id].getemail() + "\nIdade: " + usuario[id].getidade());
+                    // id = id+1;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Algo deu errado! Aparentemente, um dos campos de informação está incompleto!", "Erro!", JOptionPane.ERROR_MESSAGE);
+                }
+            // }else{
+            //     JOptionPane.showMessageDialog(null, "Tem um limite máximo de 10 contas nesse projeto, respeite ele", "Erro!", JOptionPane.ERROR_MESSAGE);
+            // }
+        });
 
         painel.add(butao);
 
