@@ -95,26 +95,24 @@ public class CadastroUsuario {
         //verifica se os campos não estão vazios, e se não estiverem vazios, cadastra o usuário e exibe uma mensagem
         botaoCadastrar.addActionListener(cadastrarUsuario -> {
             if(id[0]<10){
-                int intidade = Integer.parseInt(campoIdade.getText().trim().toString());
+                // int intidade = Integer.parseInt(campoIdade.getText().trim());
                 String generoEscolhido;
 
-                if((campoNome.getText().trim().equals(""))||((!opcaoFeminino.isSelected())&&(!opcaoMasculino.isSelected()))||(campoEmail.getText().trim().equals(""))||(intidade<=0)){
+                if((campoNome.getText().trim().equals(""))||((!opcaoFeminino.isSelected())&&(!opcaoMasculino.isSelected()))||(campoEmail.getText().trim().equals(""))||(campoIdade.getText().trim().equals(""))){
                     JOptionPane.showMessageDialog(null, "Algo deu errado! Aparentemente, um dos campos de informação está incompleto!", "Erro!", JOptionPane.ERROR_MESSAGE);
                 }else{
-
                     //por quê isso tá funcionando? Não sei, mas eu tô aceitando
                     //provavelmente deve ser variável local, tipo 'let' em javascript
                     if(opcaoFeminino.isSelected()){
                         generoEscolhido = "Feminino";
                     }else{
                         generoEscolhido = "Masculino";
-                    }
-
-                    usuario[id[0]] = new Usuario(id[0], campoNome.getText().trim(), generoEscolhido, campoEmail.getText().trim(), intidade);
+                    };
+                    usuario[id[0]] = new Usuario(id[0], campoNome.getText().trim(), generoEscolhido, campoEmail.getText().trim(), Integer.parseInt(campoIdade.getText().trim()));
                     JOptionPane.showMessageDialog(null, "Usuário cadastrado! \nNome: " + usuario[id[0]].getnome() + "\nGênero: " + usuario[id[0]].getgenero() + "\nEmail: " + usuario[id[0]].getemail() + "\nIdade: " + usuario[id[0]].getidade());
                     //usar um int normal não tava funcionando, enquanto o array de usuários tava funcionando, então eu criei um array simples de 2 posições, sendo que eu vou usar só uma, então vai ser a mesma coisa que usar um int normal
                     id[0] = id[0] + 1;
-                }
+                };
             }else{
                 JOptionPane.showMessageDialog(null, "Tem um limite máximo de 10 contas nesse projeto, respeite ele", "Erro!", JOptionPane.ERROR_MESSAGE);
             }
